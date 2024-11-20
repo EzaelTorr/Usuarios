@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
-//iNYECCIÓN POR CAMPO
+    //iNYECCIÓN POR CAMPO
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -21,8 +21,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public  Usuario findById(Long id){
+    public Usuario findById(Long id) {
         return usuarioRepository.findById(id).get();
     }
 
+    public Usuario guardaUsuario(Usuario usuario) {
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
 }
