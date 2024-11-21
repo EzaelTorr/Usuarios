@@ -1,11 +1,15 @@
 package com.trainibit.usuarios.service;
 
 import com.trainibit.usuarios.entity.Usuario;
+import com.trainibit.usuarios.response.UsuarioResponse;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface UsuarioService {
-    List<Usuario> findAll();
+    List<UsuarioResponse> findAll();
     Usuario findById(Long id);
-    Usuario guardaUsuario(Usuario usuario);
+    Usuario save(Usuario usuario);
+    Usuario update(Long id, Usuario usuario);
+    void deleteById(Long id);
 }

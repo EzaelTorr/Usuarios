@@ -1,18 +1,18 @@
 package com.trainibit.usuarios.controller;
 
 import com.trainibit.usuarios.entity.Usuario;
+import com.trainibit.usuarios.response.UsuarioResponse;
 import com.trainibit.usuarios.service.UsuarioService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Validated
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -20,10 +20,8 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> getUsuario() {
+    public ResponseEntity<List<UsuarioResponse>> getUsuario() {
         return ResponseEntity.ok(usuarioService.findAll());
-
-
     }
 
     @GetMapping("{id}") //Permite realizar la busqueda por ID
@@ -32,8 +30,30 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> postUsuario(@RequestBody Usuario usuario){
-        usuarioService.guardaUsuario(usuario);
-        return ResponseEntity.ok(usuario);
+    public ResponseEntity<Usuario> createUsuario(@Valid @RequestBody Usuario usuario) {
+        Usuario nuevoUsuario = usuarioService.save(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUsuario(@PathVariable long id) {
+        try {
+            usuarioService.deleteById(id);
+            return ResponseEntity.noContent().build();//204, eliminado correctamente
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); //404 no enocntrado
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+        try {
+            Usuario usuarioActualizado = usuarioService.update(id, usuario);
+            return ResponseEntity.ok(usuarioActualizado);
+
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
     }
 }
