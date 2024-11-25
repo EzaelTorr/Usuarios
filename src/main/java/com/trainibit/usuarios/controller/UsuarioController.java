@@ -1,6 +1,6 @@
 package com.trainibit.usuarios.controller;
-
-
+//borrar y modificar
+import com.trainibit.usuarios.entity.Usuario;
 import com.trainibit.usuarios.request.UsuarioRequest;
 import com.trainibit.usuarios.response.UsuarioResponse;
 import com.trainibit.usuarios.service.UsuarioService;
