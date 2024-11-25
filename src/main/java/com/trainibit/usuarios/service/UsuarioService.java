@@ -10,13 +10,13 @@ import java.util.List;
 public interface UsuarioService {
     List<UsuarioResponse> findAll();
     Usuario findById(Long id);
-    Usuario save(Usuario usuario);
+    Usuario save(UsuarioRequest usuarioRequest);
     Usuario update(Long id, Usuario usuario);
     void deleteById(Long id);
-    UsuarioResponse save(UsuarioResponse usuarioResponse);
+   /* UsuarioResponse save(UsuarioResponse usuarioResponse);
     UsuarioResponse update(Long id, UsuarioResponse usuarioResponse);
     UsuarioResponse delete(Long id);
     UsuarioRequest delete(Usuario usuario);
     UsuarioRequest deleteAll();
-    UsuarioRequest save(UsuarioRequest usuarioRequest);
+   */
 }

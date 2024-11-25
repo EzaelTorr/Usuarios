@@ -3,6 +3,7 @@ package com.trainibit.usuarios.service.impl;
 import com.trainibit.usuarios.entity.Usuario;
 import com.trainibit.usuarios.mapper.UsuarioMapper;
 import com.trainibit.usuarios.repository.UsuarioRepository; //Ayuda a la consulta de la bases de datos
+import com.trainibit.usuarios.request.UsuarioRequest;
 import com.trainibit.usuarios.response.UsuarioResponse;
 import com.trainibit.usuarios.service.UsuarioService;
 import jakarta.persistence.EntityNotFoundException;
@@ -30,9 +31,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.findById(id).get();
     }
 
-    @Override
-    public Usuario save(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    @Override           //tipo de dato  nombre de la variable
+    public Usuario save(UsuarioRequest usuarioRequest) {
+        return usuarioRepository.save(UsuarioMapper.mapDtoToEntity(usuarioRequest));
     }
 
     @Override

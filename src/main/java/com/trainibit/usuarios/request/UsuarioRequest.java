@@ -1,5 +1,7 @@
 package com.trainibit.usuarios.request;
 
+import lombok.NonNull;
+
 import java.time.LocalDate;
 
 public class UsuarioRequest {
@@ -13,6 +15,9 @@ public class UsuarioRequest {
 
 
     public void setId(Long id) {
+    }
+
+    public void setName(@NonNull String name) {
     }
 }
 

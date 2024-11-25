@@ -29,15 +29,15 @@ public class UsuarioMapper {
         return usuarioResponses;
 
     }
-    public static UsuarioRequest mapDtoToEntity(Usuario usuario) {
+    public static Usuario mapDtoToEntity(UsuarioRequest usuarioRequest) {
 
-        UsuarioRequest  usuarioRequest = new UsuarioRequest();
-        usuarioRequest.setId(usuario.getId());
-        usuarioRequest.setName(usuario.getName());
-        usuarioRequest.setLastName(usuario.getLastName());
-        usuarioRequest.setBirthDate(usuario.getBirthDate());
-        usuarioRequest.setEmail(usuario.getEmail());
-        usuarioRequest.Password(usuario.getPassword());
-        return usuarioRequest;
+        Usuario  usuario = new Usuario();
+        usuario.setId(usuario.getId());
+        usuario.setName(usuario.getName());
+        usuario.setLastName(usuario.getLastName());
+        usuario.setBirthDate(usuario.getBirthDate());
+        usuario.setEmail(usuario.getEmail());
+        usuario.setPassword(usuario.getPassword());
+        return usuario;
     }
 }

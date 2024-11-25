@@ -1,6 +1,7 @@
 package com.trainibit.usuarios.controller;
 
-import com.trainibit.usuarios.entity.Usuario;
+
+import com.trainibit.usuarios.request.UsuarioRequest;
 import com.trainibit.usuarios.response.UsuarioResponse;
 import com.trainibit.usuarios.service.UsuarioService;
 import jakarta.persistence.EntityNotFoundException;
@@ -30,8 +31,8 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@Valid @RequestBody Usuario usuario) {
-        Usuario nuevoUsuario = usuarioService.save(usuario);
+    public ResponseEntity<Usuario> createUsuario(@Valid @RequestBody UsuarioRequest usuarioRequest) {
+        Usuario nuevoUsuario = usuarioService.save(usuarioRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
     }
 
