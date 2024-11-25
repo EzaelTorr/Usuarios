@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 
-public class ApiErrorresponse {
+public class   ApiErrorresponse {
 
     private String message;
     private Integer status;

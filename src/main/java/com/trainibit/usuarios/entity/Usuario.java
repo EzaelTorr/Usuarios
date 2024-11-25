@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario extends AuditableRecord {
 
 
     @Id

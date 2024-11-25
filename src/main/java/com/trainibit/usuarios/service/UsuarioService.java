@@ -1,6 +1,7 @@
 package com.trainibit.usuarios.service;
 
 import com.trainibit.usuarios.entity.Usuario;
+import com.trainibit.usuarios.request.UsuarioRequest;
 import com.trainibit.usuarios.response.UsuarioResponse;
 import org.springframework.http.ResponseEntity;
 
@@ -12,4 +13,10 @@ public interface UsuarioService {
     Usuario save(Usuario usuario);
     Usuario update(Long id, Usuario usuario);
     void deleteById(Long id);
+    UsuarioResponse save(UsuarioResponse usuarioResponse);
+    UsuarioResponse update(Long id, UsuarioResponse usuarioResponse);
+    UsuarioResponse delete(Long id);
+    UsuarioRequest delete(Usuario usuario);
+    UsuarioRequest deleteAll();
+    UsuarioRequest save(UsuarioRequest usuarioRequest);
 }

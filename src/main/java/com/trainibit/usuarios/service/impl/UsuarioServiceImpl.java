@@ -53,4 +53,5 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new EntityNotFoundException("Usuario con id" + id + " no encontrado");
         }
     }
+
 }
